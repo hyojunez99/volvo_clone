@@ -112,7 +112,7 @@ header {
         @include mixin.tablet {
           @include mixin.flex-layout(
             $direction: column,
-            $justify: space-between,
+            $justify: center,
             $align: flex-start
           );
           width: 300px;
