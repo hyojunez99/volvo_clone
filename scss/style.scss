@@ -1,0 +1,588 @@
+@charset "utf-8";
+@use "./font";
+@use "./variables" as *;
+@use "./mixin" as mixin;
+
+html {
+  font-size: 16px;
+  @include mixin.tablet {
+    font-size: 16px;
+  }
+  @include mixin.desktop {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-color: $bg-color;
+  color: $font-mian;
+}
+
+// header(모바일 사이즈 기준)
+header {
+  nav {
+    padding: 1rem;
+    margin: 0 auto;
+    @include mixin.flex-layout($justify: space-between);
+    .logo {
+      background-image: url(../../images/logo.png);
+      background-position: center;
+      background-size: cover;
+      width: 120px;
+      height: 8px;
+    }
+    .pc-icons {
+      display: none;
+      @include mixin.desktop {
+        @include mixin.flex-layout($gap: 3rem);
+        font-weight: 500;
+      }
+    }
+    .menu-icons-mobile {
+      .icons {
+        @include mixin.desktop {
+          li {
+            &:nth-of-type(2) {
+              display: none;
+            }
+          }
+        }
+        @include mixin.flex-layout();
+        .search-icon {
+          background-image: url(../../images/icon/search-icon.svg);
+          background-position: center;
+          background-size: cover;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+  .popup {
+    position: relative;
+    padding: 1rem 2rem;
+    background-color: $font-mian;
+    color: $bg-color;
+    .top {
+      @include mixin.flex-layout($justify: space-between);
+      @include mixin.tablet {
+        @include mixin.flex-layout();
+      }
+      .pop-txt {
+        @include mixin.tablet {
+          @include mixin.flex-layout();
+        }
+        a {
+          font-size: 18px;
+          text-decoration: underline;
+        }
+      }
+      .close-icon {
+        @include mixin.tablet {
+          position: absolute;
+          right: 16px;
+        }
+        background-image: url(../../images/icon/close-icon-white.svg);
+        background-position: center;
+        background-size: cover;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  .box-image {
+    // height: 100%;
+    aspect-ratio: 3/1;
+    background-image: url(../../images/item/header-image.jpg);
+    background-position: center;
+    background-size: cover;
+    color: $bg-color;
+    padding: 2rem;
+    @include mixin.flex-layout(column);
+    @include mixin.tablet {
+      @include mixin.flex-layout(column, space-between, flex-start);
+    }
+    .box-card {
+      @include mixin.flex-layout(column, space-between, center, 20rem);
+      @include mixin.tablet {
+        @include mixin.flex-layout(column, space-between, flex-start);
+      }
+      .box-txt {
+        text-align: left;
+        @include mixin.tablet {
+          @include mixin.flex-layout(
+            $direction: column,
+            $justify: space-between,
+            $align: flex-start
+          );
+          width: 300px;
+        }
+        h1 {
+          padding-top: 1rem;
+        }
+      }
+      .btn-wrap {
+        @include mixin.flex-layout();
+        background-color: $bg-color;
+        border-radius: 8px;
+        p {
+          padding: 1rem 2rem;
+          color: $font-mian;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}
+// main영역 (모바일 버전)
+main {
+  @include mixin.flex-layout(column);
+  .first-card {
+    max-width: 1100px;
+    @include mixin.flex-layout(column);
+    @include mixin.tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    @include mixin.desktop {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    padding: 2rem;
+    .f-card {
+      flex: 1;
+      @include mixin.flex-layout(column, space-between, stretch);
+      padding: 24px;
+      background-color: $bg-sub;
+      .f-tittle {
+        width: 100%;
+        @include mixin.flex-layout($justify: space-between);
+        h2 {
+          font-weight: 500;
+          font-size: 16px;
+        }
+        .right-icon {
+          background-image: url(../../images/icon/right-icon.svg);
+          background-position: center;
+          background-size: cover;
+          width: 16px;
+          height: 16px;
+        }
+      }
+      p {
+        font-weight: 300;
+        color: $font-sub;
+      }
+    }
+  }
+  .middle-card {
+    max-width: 1100px;
+    @include mixin.desktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    padding: 2rem;
+    .m-card {
+      padding:  2rem 0 ;
+      // box-sizing: border-box;
+      @include mixin.flex-layout(column, space-between, flex-start);
+      .m-card-img {
+        // background-image: url(../../images/item/mid-image01.jpg);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        // height: auto;
+        aspect-ratio: 16 / 9;
+      }
+        h2{
+          font-size: 20px;
+        }
+        h3{
+          font-size: 16px;
+        }
+      .under-btn {
+        padding: 1.5rem 0;
+        @include mixin.flex-layout($gap: 5px);
+        .right-icon {
+          background-image: url(../../images/icon/right-icon.svg);
+          background-position: center;
+          background-size: cover;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+  .car {
+    width: 100%;
+          display: flex;
+      flex-direction: column;
+    max-width: 1100px;
+    h2 {
+      padding: 3rem;
+    }
+    .ex30 {
+      display: flex;
+      flex-direction: column;
+      // max-width: 1100px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      background-image: linear-gradient(-180deg, #f8f8f8 50%, #ddd 100%);
+      // height: 500px;
+      // overflow: hidden;
+      .c-pack {
+        @include mixin.flex-layout(column,$justify: space-between,$align: flex-start);
+        .c-tittle {
+          width: 100%;
+          @include mixin.flex-layout($justify: space-between);
+          .c-tittle-btn {
+            @include mixin.flex-layout();
+            .left-btn {
+              @include mixin.flex-layout();
+              background-color: #ddd;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              div {
+                background-image: url(../../images/icon/left-icon.svg);
+                background-position: center;
+                background-size: cover;
+                width: 24px;
+                height: 24px;
+              }
+            }
+            .right-btn {
+              @include mixin.flex-layout();
+              background-color: #222;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              div {
+                background-image: url(../../images/icon/right-icon-white.svg);
+                background-position: center;
+                background-size: cover;
+                width: 24px;
+                height: 24px;
+              }
+            }
+          }
+        }
+        .btn-wrap {
+          // position: relative;
+          // bottom: -50px;
+          // display: inline-block;
+          @include mixin.flex-layout(flex-start);
+          padding: 1rem 2rem;
+          background-color: $font-mian;
+          border-radius: 8px;
+          p {
+            color: $bg-color;
+          }
+        }
+      }
+      .car-images {
+        @include mixin.flex-layout();
+        // width: 100%;
+        // height: auto;
+        // overflow: hidden;
+        // bottom: -150px;
+        // position: relative;
+        // bottom: -10px;
+        .car-img {
+          // display: inline-block;
+          position: relative;
+          // left: 563px;
+          min-width: 360px;
+          max-width: 800px;
+          aspect-ratio: 3 / 1;
+          width: 100%;
+          height: auto;
+          background-image: url(../../images/item/car-01.png);
+          background-position: center;
+          background-size: cover;
+          @include mixin.tablet {
+          }
+        }
+      }
+    }
+    .under-line {
+      margin: auto 0;
+      position: relative;
+      bottom: -20px;
+      ul {
+        @include mixin.flex-layout($gap: 0);
+        width: 100%;
+        height: 3px;
+        background-color: #c1c1c1;
+        li {
+          width: 75%;
+          height: 3px;
+          &:nth-of-type(1) {
+            background-color: $font-mian;
+          }
+        }
+      }
+    }
+  }
+  .last-card {
+    max-width: 1100px;
+    // @include mixin.flex-layout(column);
+    padding: 2rem;
+    h2 {
+      font-size: 20px;
+      font-weight: 400;
+      text-align: center;
+      color: $font-sub;
+      padding-bottom: 2rem;
+      strong {
+        color: $font-mian;
+      }
+    }
+    .grid {
+      @include mixin.tablet {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        align-items: stretch;
+        .l-card:nth-of-type(1) {
+          grid-column: 1 / 3;
+        }
+      }
+      @include mixin.desktop {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        align-items: stretch;
+        .l-card:nth-of-type(1) {
+          grid-column: auto;
+        }
+      }
+      .l-card {
+        overflow: hidden;
+        @include mixin.flex-layout($direction: column, $gap: 0);
+        height: 100%;
+        padding-bottom: 2rem;
+        .l-card-img {
+          // flex:2;
+          // background-image: url(../../images/item/last-image01.jpeg);
+          background-position: center;
+          background-size: cover;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9;
+        }
+        .l-card-txt {
+          box-sizing: border-box;
+          width: 100%;
+          // flex: 1;
+          @include mixin.flex-layout(
+            $direction: column,
+            $justify: flex-start,
+            $gap: 0
+          );
+          flex-grow: 1;
+          background-color: $bg-sub;
+          padding: 24px;
+          .l-tittle {
+            width: 100%;
+            padding-bottom: 12px;
+            @include mixin.flex-layout($justify: space-between);
+            .right-icon {
+              background-image: url(../../images/icon/right-icon.svg);
+              background-position: center;
+              background-size: cover;
+              width: 16px;
+              height: 16px;
+            }
+          }
+          p {
+            color: $font-sub;
+            // padding-bottom: 1rem;
+          }
+        }
+      }
+    }
+    .l-card-4 {
+      height: 100%;
+      padding-top: 2rem;
+      @include mixin.tablet {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+      }
+      padding-bottom: 2rem;
+      .l-card-img {
+        background-image: url(../../images/item/last-image04.jpg);
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        @include mixin.tablet {
+          aspect-ratio: 1/1;
+        }
+      }
+      .l-card-txt {
+        @include mixin.flex-layout(column, $align: flex-start);
+        background-color: $bg-sub;
+        padding: 24px;
+        .l-tittle {
+          width: 100%;
+          padding-bottom: 12px;
+          @include mixin.flex-layout($justify: space-between);
+          .right-icon {
+            background-image: url(../../images/icon/right-icon.svg);
+            background-position: center;
+            background-size: cover;
+            width: 16px;
+            height: 16px;
+          }
+        }
+        p {
+          color: $font-sub;
+          padding-bottom: 1rem;
+        }
+        .btn-wrap {
+          border: 1px solid #222;
+          border-radius: 8px;
+          p {
+            padding: 1rem 2rem;
+            color: $font-mian;
+          }
+        }
+      }
+    }
+  }
+  .warning {
+    p {
+      color: $font-sub;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+}
+
+// footer 영역
+footer {
+  padding: 2rem;
+  background-color: $bg-sub;
+  @include mixin.flex-layout(column, $gap: 2rem);
+  .back {
+    @include mixin.flex-layout($gap: 5px);
+    .up-icon {
+      background-image: url(../../images/icon/up-icon.svg);
+      background-position: center;
+      background-size: cover;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .help {
+    @include mixin.tablet {
+      display: none;
+    }
+    width: 100%;
+    li {
+      padding: 1rem 0;
+      @include mixin.flex-layout($justify: space-between);
+      border-bottom: 1px solid #ddd;
+      .down-icon {
+        background-image: url(../../images/icon/down-icon.svg);
+        background-position: center;
+        background-size: cover;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+  .help-tablet {
+    display: none;
+    @include mixin.tablet {
+      @include mixin.flex-layout();
+      li {
+        font-weight: 600;
+        padding: 14px;
+        &:nth-of-type(1) {
+          color: #616161;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+.korea {
+  @include mixin.flex-layout($gap: 5px);
+  .korea-icon {
+    background-image: url(../../images/icon/location-icon.svg);
+    background-position: center;
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+  }
+}
+.sns-icons {
+  @include mixin.flex-layout($gap: 3rem);
+  .youtube-icon {
+    background-image: url(../../images/icon/youtube-icon.png);
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+  }
+  .instar-icon {
+    background-image: url(../../images/icon/instar-icon.png);
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+  }
+  .facebook-icon {
+    background-image: url(../../images/icon/facebook-icon.png);
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+  }
+}
+.last {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  li {
+    color: $font-sub;
+  }
+}
+.copyright {
+  color: $font-sub;
+}
+
+// 이미지
+main .middle-card .m-card {
+  &:nth-of-type(1) .m-card-img {
+    background-image: url(../../images/item/mid-image01.jpg);
+  }
+  &:nth-of-type(2) .m-card-img {
+    background-image: url(../../images/item/mid-image02.jpg);
+  }
+}
+
+main .last-card .l-card {
+  &:nth-of-type(1) .l-card-img {
+    background-image: url(../../images/item/last-image01.jpeg);
+  }
+  &:nth-of-type(2) .l-card-img {
+    background-image: url(../../images/item/last-image02.jpeg);
+  }
+  &:nth-of-type(3) .l-card-img {
+    background-image: url(../../images/item/last-image03.jpeg);
+  }
+}
