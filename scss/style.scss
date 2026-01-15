@@ -100,7 +100,7 @@ header {
     padding: 2rem;
     @include mixin.flex-layout(column);
     @include mixin.tablet {
-      @include mixin.flex-layout(column, space-between, flex-start);
+      @include mixin.flex-layout(column, center, flex-start);
     }
     .box-card {
       @include mixin.flex-layout(column, space-between, center, 20rem);
@@ -112,7 +112,7 @@ header {
         @include mixin.tablet {
           @include mixin.flex-layout(
             $direction: column,
-            $justify: center,
+            $justify: space-between,
             $align: flex-start
           );
           width: 300px;
